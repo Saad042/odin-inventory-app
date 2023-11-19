@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  h1 Title: #{item.name}
+
+  p #[strong Description:] #{item.description}
+  p #[strong Category:] #{item.category.name}
+  p #[strong Price:] #{item.price}
+  p #[strong Number in Stock:] #{item.number_in_stock}
+  hr
+  a(href=item.url+'/update') 
+    button.btn.btn-primary  Update item
+  a(href=item.url+'/delete') 
+    button.btn.btn-danger  Delete item

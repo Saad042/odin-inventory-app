@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1 Title: #{category.name}
+
+  p #[strong Description:] #{category.description}
+
+  hr
+  a(href=category.url+'/items') 
+    button.btn.btn-primary  View Items
+  hr
+  a(href=category.url+'/update') 
+    button.btn.btn-primary  Update category
+  a(href=category.url+'/delete') 
+    button.btn.btn-danger  Delete category
