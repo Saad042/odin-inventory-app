@@ -22,5 +22,6 @@ block content
   form(method='POST' action='')
     div.form-group
       input#categoryid.form-control(type='hidden' name='categoryid' required='true', value=category._id )
-
+      label(for="key") Secret Key 
+      input#key.form-control(type='password' name='key' required placeholder="xxxxxxxx")
     button.btn.btn-danger(type='submit') Delete

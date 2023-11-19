@@ -147,13 +147,15 @@ exports.item_delete_get = asyncHandler(async (req, res, next) => {
 exports.item_delete_post = asyncHandler(async (req, res, next) => {
   const item = await Item.findById(req.params.id).exec();
 
+  const { key } = req.body;
+
   if (item === null) {
     const err = new Error('Item not found');
     err.status = 404;
     return next(err);
   }
-
-  await Item.findByIdAndDelete(req.params.id).exec();
-
-  res.redirect('/');
+  if (key === process.env.SECRET_KEY) {
+    await Item.findByIdAndDelete(req.params.id).exec();
+    res.redirect('/');
+  } else res.redirect(req.baseUrl + '/' + req.url);
 });

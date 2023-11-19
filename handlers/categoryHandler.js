@@ -131,18 +131,21 @@ exports.category_delete_get = asyncHandler(async (req, res, next) => {
 exports.category_delete_post = asyncHandler(async (req, res, next) => {
   const category = await Category.findById(req.params.id).exec();
 
+  const { key } = req.body;
+
   if (category === null) {
     const err = new Error('Category not found');
     err.status = 404;
     return next(err);
   }
 
-  await Promise.all([
-    Category.findByIdAndDelete(req.params.id).exec(),
-    Item.deleteMany({ category: req.params.id }).exec(),
-  ]);
-
-  res.redirect('/');
+  if (key === process.env.SECRET_KEY) {
+    await Promise.all([
+      Category.findByIdAndDelete(req.params.id).exec(),
+      Item.deleteMany({ category: req.params.id }).exec(),
+    ]);
+    res.redirect('/');
+  } else return res.redirect(req.url);
 });
 
 exports.category_items_list = asyncHandler(async (req, res, next) => {

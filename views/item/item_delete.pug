@@ -8,5 +8,6 @@ block content
   form(method='POST' action='')
     div.form-group
       input#itemid.form-control(type='hidden' name='itemid' required='true', value=item._id )
-
+      label(for="key") Secret Key 
+      input#key.form-control(type='password' name='key' required placeholder="xxxxxxxx")
     button.btn.btn-danger(type='submit') Delete
