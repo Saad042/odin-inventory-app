@@ -7,18 +7,18 @@ block content
   form(method='POST' action='')
     div.form-group
       label(for='name') Name:
-      input#name.form-control(type='text' placeholder='Groceries, Electronics.' name='name' required='true' value=(undefined===item ? '' : item.name) )
+      input#name.form-control(type='text' placeholder='Groceries, Electronics.' name='name' required='true' value!=(undefined===item ? '' : item.name) )
 
       label(for='description') Description:
-      input#description.form-control(type='text' placeholder='A concise description of the item.' name='description' required='true' value=(undefined===item ? '' : item.description) )
+      input#description.form-control(type='text' placeholder='A concise description of the item.' name='description' required='true' value!=(undefined===item ? '' : item.description) )
     div.form-group
       label(for='category') Category:
       select#category.form-control(type='select' placeholder='Select category' name='category' required='true' )
         for category in categories
           if item
-            option(value=category._id selected=(category._id.toString()===item.category._id.toString() ? 'selected' : false) ) #{category.name}
+            option(value=category._id selected=(category._id.toString()===item.category._id.toString() ? 'selected' : false) ) !{category.name}
           else
-            option(value=category._id) #{category.name}
+            option(value=category._id) !{category.name}
 
 
       label(for='price') Price:

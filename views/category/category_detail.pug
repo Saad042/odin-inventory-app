@@ -1,9 +1,9 @@
 extends ../layout
 
 block content
-  h1 Title: #{category.name}
+  h1 Title: !{category.name}
 
-  p #[strong Description:] #{category.description}
+  p #[strong Description:] !{category.description}
 
   hr
   a(href=category.url+'/items') 

@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-  h1 #{title}: #{category.name}
+  h1 #{title}: !{category.name}
 
   if category_items.length
 
@@ -14,8 +14,8 @@ block content
       dl
       each item in category_items
         dt
-          a(href=item.url) #{item.name}
-        dd #{item.description}
+          a(href=item.url) !{item.name}
+        dd !{item.description}
 
   p Do you really want to delete this category?
 

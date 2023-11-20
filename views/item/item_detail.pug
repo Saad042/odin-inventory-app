@@ -1,10 +1,10 @@
 extends ../layout
 
 block content
-  h1 Title: #{item.name}
+  h1 Title: !{item.name}
 
-  p #[strong Description:] #{item.description}
-  p #[strong Category:] #{item.category.name}
+  p #[strong Description:] !{item.description}
+  p #[strong Category:] !{item.category.name}
   p #[strong Price:] #{item.price}
   p #[strong Number in Stock:] #{item.number_in_stock}
   hr
